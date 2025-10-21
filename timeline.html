@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timeline – Justice for James</title>
+    <meta name="description" content="Key events in our pursuit of justice for James and advocacy for victims’ rights." />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="icon" href="./assets/images/hero-collage.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="index.html">Justice for James</a>
+        <nav id="nav" class="nav">
+          <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+          <ul class="nav-menu">
+            <li><a href="timeline.html" class="active">Timeline</a></li>
+            <li><a href="documents.html">Documents</a></li>
+            <li><a href="updates.html">Updates</a></li>
+            <li><a href="rights.html">Know Your Rights</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Timeline of Events</h1>
+          <p>Below is a chronological overview of key actions and milestones in our pursuit of justice for James. Dates are provided where known; items marked as “YYYY‑MM‑DD” indicate details still being added.</p>
+        </div>
+      </section>
+      <section class="timeline-section">
+        <div class="container">
+          <ul id="timeline-list" class="timeline-list"></ul>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Justice for James. All rights reserved.</p>
+        <p class="small">This site is for informational purposes only and does not constitute legal advice.</p>
+      </div>
+    </footer>
+    <script src="./scripts/main.js"></script>
+    <script>
+      // Render the timeline items from JSON
+      fetch('./data/timeline.json')
+        .then((response) => response.json())
+        .then((items) => {
+          const list = document.getElementById('timeline-list');
+          items.sort((a, b) => (a.date > b.date ? -1 : 1));
+          items.forEach((item) => {
+            const li = document.createElement('li');
+            li.classList.add('timeline-item');
+            li.innerHTML = `
+              <div class="timeline-date">${item.date}</div>
+              <div class="timeline-content">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+              </div>
+            `;
+            list.appendChild(li);
+          });
+        })
+        .catch((err) => {
+          console.error('Error loading timeline', err);
+        });
+    </script>
+  </body>
+</html>
