@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Updates – Justice for James</title>
+    <meta name="description" content="Stay up to date on the latest developments in James’s case and our advocacy efforts." />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="icon" href="./assets/images/hero-collage.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="index.html">Justice for James</a>
+        <nav id="nav" class="nav">
+          <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+          <ul class="nav-menu">
+            <li><a href="timeline.html">Timeline</a></li>
+            <li><a href="documents.html">Documents</a></li>
+            <li><a href="updates.html" class="active">Updates</a></li>
+            <li><a href="rights.html">Know Your Rights</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Updates</h1>
+          <p>Regular updates help keep friends, family and supporters informed about our progress and advocacy. Major milestones will be archived on the timeline page.</p>
+        </div>
+      </section>
+      <section class="updates-section">
+        <div class="container">
+          <ul id="updates-list" class="updates-list"></ul>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Justice for James. All rights reserved.</p>
+        <p class="small">This site is for informational purposes only and does not constitute legal advice.</p>
+      </div>
+    </footer>
+    <script src="./scripts/main.js"></script>
+    <script>
+      fetch('./content/updates/updates.json')
+        .then((res) => res.json())
+        .then((updates) => {
+          const list = document.getElementById('updates-list');
+          // sort descending by date
+          updates.sort((a, b) => (a.date > b.date ? -1 : 1));
+          updates.forEach((item) => {
+            const li = document.createElement('li');
+            li.classList.add('update-item');
+            li.innerHTML = `
+              <div class="update-date">${item.date}</div>
+              <div class="update-content">
+                <h3>${item.title}</h3>
+                <p>${item.content}</p>
+              </div>
+            `;
+            list.appendChild(li);
+          });
+        })
+        .catch((err) => console.error('Error loading updates', err));
+    </script>
+  </body>
+</html>

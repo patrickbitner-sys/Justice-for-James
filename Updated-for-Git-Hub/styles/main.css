@@ -1,0 +1,401 @@
+/* Global styles for Justice for James site */
+:root {
+  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --color-bg: #fdfaf6;
+  --color-primary: #1e4c7b;
+  --color-secondary: #38598a;
+  --color-text: #333;
+  --color-muted: #666;
+  --color-card-bg: #ffffff;
+  --border-radius: 8px;
+  --max-width: 960px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Header */
+.site-header {
+  background-color: var(--color-card-bg);
+  border-bottom: 1px solid #eaeaea;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.logo {
+  font-weight: bold;
+  color: var(--color-primary);
+  font-size: 1.3rem;
+}
+
+/* Navigation */
+.nav {
+  position: relative;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-menu a {
+  color: var(--color-text);
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  background-color: #f1f1f1;
+  color: var(--color-primary);
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/hero-collage.png'), url('../assets/images/blue-subaru.png'), url('../assets/images/camaro-1968.png'), url('../assets/images/motorcycle.png');
+  background-size: 60%, 25%, 25%, 25%;
+  background-position: center center, top right, bottom left, bottom right;
+  background-repeat: no-repeat;
+  /* Increase opacity slightly so faint vehicle sketches are visible in the hero */
+  opacity: 0.22;
+  filter: grayscale(100%) brightness(110%);
+  z-index: -1;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+.primary-btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+}
+
+.primary-btn:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Highlights */
+.highlights {
+  padding: 3rem 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--color-card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.card p {
+  margin-bottom: 1rem;
+  color: var(--color-muted);
+}
+
+.card-link {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Card-specific backgrounds */
+.card-updates::before,
+.card-documents::before,
+.card-rights::before,
+.card-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.05;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  z-index: -1;
+}
+
+.card-updates::before {
+  background-image: url('../assets/images/motorcycle.png');
+  background-position: 50% 80%;
+}
+.card-documents::before {
+  background-image: url('../assets/images/camaro-1968.png');
+  background-position: 50% 80%;
+}
+.card-rights::before {
+  background-image: url('../assets/images/blue-subaru.png');
+  background-position: 50% 80%;
+}
+.card-timeline::before {
+  background-image: url('../assets/images/camaro-1968.png');
+  background-position: 50% 80%;
+}
+
+/* Page header */
+.page-header {
+  padding: 2rem 0 1rem;
+  background-color: var(--color-card-bg);
+  border-bottom: 1px solid #eaeaea;
+}
+
+.page-header h1 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+.page-header p {
+  color: var(--color-muted);
+}
+
+/* Timeline */
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid var(--color-primary);
+}
+
+.timeline-item {
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  left: -8px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+}
+
+.timeline-content p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* Documents list */
+.documents-list,
+.updates-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.document-item,
+.update-item {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.document-item h3,
+.update-item h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  color: var(--color-primary);
+}
+
+.document-item p,
+.update-item p {
+  margin-bottom: 0.5rem;
+  color: var(--color-muted);
+}
+
+.document-item a,
+.update-item a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Rights & Resources pages */
+.rights-section,
+.resources-section {
+  padding: 2rem 0;
+}
+
+.rights-section h2,
+.resources-section h2 {
+  color: var(--color-secondary);
+  margin-top: 2rem;
+}
+
+.rights-section p,
+.resources-section p,
+.resources-section li {
+  color: var(--color-muted);
+}
+
+/* Contact */
+.contact-section {
+  padding: 2rem 0;
+}
+
+.contact-info h2 {
+  color: var(--color-secondary);
+}
+
+.contact-info p {
+  color: var(--color-muted);
+}
+
+/* Footer */
+.site-footer {
+  padding: 1.5rem 0;
+  background-color: var(--color-card-bg);
+  border-top: 1px solid #eaeaea;
+  text-align: center;
+}
+
+.site-footer .small {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+/* Responsive navigation */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: inline-block;
+  }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-card-bg);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .nav-menu.show {
+    display: flex;
+  }
+  .nav-menu li {
+    border-bottom: 1px solid #eaeaea;
+  }
+  .nav-menu li:last-child {
+    border-bottom: none;
+  }
+  .nav-menu a {
+    padding: 0.75rem;
+    display: block;
+  }
+}

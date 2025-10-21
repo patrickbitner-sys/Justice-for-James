@@ -1,0 +1,27 @@
+[
+  {
+    "name": "CO‑VRA Complaint Template",
+    "file": "documents/CO-VRA-Complaint-Template.md",
+    "description": "Template for filing a complaint under Colorado’s Victims Rights Act. Customize the details for your situation."
+  },
+  {
+    "name": "Cover Letter – Silva–Babcock Plea Negotiations",
+    "file": "documents/Cover-Letter.md",
+    "description": "Cover letter accompanying the VRA complaint about exclusion from the plea negotiations in the Silva–Babcock case."
+  },
+  {
+    "name": "Letter to U.S. Attorney General (USPS/FedEx)",
+    "file": "documents/Letter-to-US-AG.md",
+    "description": "Formal letter sent to the U.S. Attorney General requesting federal oversight and inclusion in the case."
+  },
+  {
+    "name": "Letter to Colorado Attorney General (FedEx)",
+    "file": "documents/Letter-to-CO-AG.md",
+    "description": "Formal letter sent to the Colorado Attorney General requesting inclusion, accountability and a review of the case."
+  },
+  {
+    "name": "Mailing Instructions",
+    "file": "documents/Mailing-Instructions.md",
+    "description": "Step-by-step guide for sending hard-copy letters and complaints via trackable mail services."
+  }
+]

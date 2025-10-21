@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documents – Justice for James</title>
+    <meta name="description" content="Browse letters, complaints, templates and other key documents related to James’s case." />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="icon" href="./assets/images/hero-collage.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="index.html">Justice for James</a>
+        <nav id="nav" class="nav">
+          <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+          <ul class="nav-menu">
+            <li><a href="timeline.html">Timeline</a></li>
+            <li><a href="documents.html" class="active">Documents</a></li>
+            <li><a href="updates.html">Updates</a></li>
+            <li><a href="rights.html">Know Your Rights</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Documents</h1>
+          <p>Here you can find copies of the formal letters, complaints and other documents we’ve created and sent. These materials may help other families who need examples of how to assert their rights. Remember to adjust details for your own situation.</p>
+        </div>
+      </section>
+      <section class="documents-section">
+        <div class="container">
+          <ul id="documents-list" class="documents-list"></ul>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Justice for James. All rights reserved.</p>
+        <p class="small">This site is for informational purposes only and does not constitute legal advice.</p>
+      </div>
+    </footer>
+    <script src="./scripts/main.js"></script>
+    <script>
+      // Render the document list from JSON
+      fetch('./content/documents/index.json')
+        .then((res) => res.json())
+        .then((docs) => {
+          const list = document.getElementById('documents-list');
+          docs.forEach((doc) => {
+            const li = document.createElement('li');
+            li.classList.add('document-item');
+            li.innerHTML = `
+              <h3>${doc.name}</h3>
+              <p>${doc.description}</p>
+              <a href="./content/${doc.file}" download>Download →</a>
+            `;
+            list.appendChild(li);
+          });
+        })
+        .catch((err) => console.error('Error loading documents', err));
+    </script>
+  </body>
+</html>
